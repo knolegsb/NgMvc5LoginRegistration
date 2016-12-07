@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+@section Scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/loginApp/loginApp.js"></script>
+}
+
+<h2>Login</h2>
+
+<div ng-app="loginApp" ng-controller="loginController">
+    {{1+1}}
+    <div class="panel panel-info">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Login Form
+            </div>
+            <div class="panel-body">
+                <form name="myForm" novalidate ng-submit="LoginForm()">
+                    <div>{{msg}}</div>
+                    <table ng-show="!IsLoggedIn" class="table table-horizontal">
+                        <tr>
+                            <td>Email/UserName : </td>
+                            <td>
+                                <input type="email" ng-model="UserModel.Email" name="UserEmail" ng-class="Submited?'ng-dirty':''" required autofocus class="form-control" />
+                                <span ng-show="(myForm.UserEmail.$dirty || Submitted) && myForm.UserEmail.$error.required">Please enter Email</span>
+                                <span ng-show="myForm.UserEmail.$error.email">Email is not valid</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password : </td>
+                            <td>
+                                <input type="password" ng-model="UserModel.Password" name="UserPassword" ng-class="Submitted?'ng-dirty': ''" required autofocus class="form-control" />
+                                <span ng-show="(myForm.UserPassword.$dirty || Submitted) && myForm.UserPassword.$error.required">Password Required</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="submit" value="Submit" class="btn btn-success" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>
